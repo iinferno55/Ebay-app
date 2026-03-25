@@ -1,60 +1,56 @@
 import { KeywordEntry } from '../types.js';
 
 export const DEFAULT_KEYWORDS: KeywordEntry[] = [
-  // Electronics - Apple
-  { id: 'e1', keyword: 'iphone', category: 'Electronics', enabled: true, isCustom: false },
-  { id: 'e2', keyword: 'macbook', category: 'Electronics', enabled: true, isCustom: false },
-  { id: 'e3', keyword: 'ipad', category: 'Electronics', enabled: true, isCustom: false },
-  { id: 'e4', keyword: 'airpods', category: 'Electronics', enabled: true, isCustom: false },
-  { id: 'e5', keyword: 'apple watch', category: 'Electronics', enabled: true, isCustom: false },
+  // Tablets & E-readers
+  { id: 'tab1', keyword: 'remarkable 2', category: 'Tablets', enabled: true, isCustom: false, estimatedMarketValue: 280 },
+  { id: 'tab2', keyword: 'ipad pro', category: 'Tablets', enabled: true, isCustom: false, estimatedMarketValue: 700 },
+  { id: 'tab3', keyword: 'ipad air', category: 'Tablets', enabled: true, isCustom: false, estimatedMarketValue: 450 },
+  { id: 'tab4', keyword: 'surface pro', category: 'Tablets', enabled: true, isCustom: false, estimatedMarketValue: 600 },
 
-  // Electronics - Gaming
-  { id: 'g1', keyword: 'playstation', category: 'Gaming', enabled: true, isCustom: false },
-  { id: 'g2', keyword: 'nintendo switch', category: 'Gaming', enabled: true, isCustom: false },
-  { id: 'g3', keyword: 'xbox series', category: 'Gaming', enabled: true, isCustom: false },
-  { id: 'g4', keyword: 'gameboy', category: 'Gaming', enabled: true, isCustom: false },
-  { id: 'g5', keyword: 'retro games', category: 'Gaming', enabled: true, isCustom: false },
+  // Laptops
+  { id: 'lap1', keyword: 'macbook pro', category: 'Laptops', enabled: true, isCustom: false, estimatedMarketValue: 1300 },
+  { id: 'lap2', keyword: 'macbook air', category: 'Laptops', enabled: true, isCustom: false, estimatedMarketValue: 850 },
+  { id: 'lap3', keyword: 'dell xps 15', category: 'Laptops', enabled: true, isCustom: false, estimatedMarketValue: 900 },
+  { id: 'lap4', keyword: 'thinkpad x1', category: 'Laptops', enabled: true, isCustom: false, estimatedMarketValue: 700 },
 
-  // Electronics - Other
-  { id: 'e6', keyword: 'samsung galaxy', category: 'Electronics', enabled: true, isCustom: false },
-  { id: 'e7', keyword: 'gopro camera', category: 'Electronics', enabled: true, isCustom: false },
-  { id: 'e8', keyword: 'drone dji', category: 'Electronics', enabled: true, isCustom: false },
-  { id: 'e9', keyword: 'graphics card', category: 'Electronics', enabled: true, isCustom: false },
-  { id: 'e10', keyword: 'mechanical keyboard', category: 'Electronics', enabled: true, isCustom: false },
+  // Phones
+  { id: 'ph1', keyword: 'iphone 15 pro', category: 'Phones', enabled: true, isCustom: false, estimatedMarketValue: 900 },
+  { id: 'ph2', keyword: 'iphone 14 pro', category: 'Phones', enabled: true, isCustom: false, estimatedMarketValue: 700 },
+  { id: 'ph3', keyword: 'iphone 13', category: 'Phones', enabled: true, isCustom: false, estimatedMarketValue: 380 },
+  { id: 'ph4', keyword: 'samsung s24 ultra', category: 'Phones', enabled: true, isCustom: false, estimatedMarketValue: 850 },
 
   // Cameras
-  { id: 'c1', keyword: 'canon camera', category: 'Cameras', enabled: true, isCustom: false },
-  { id: 'c2', keyword: 'nikon camera', category: 'Cameras', enabled: true, isCustom: false },
-  { id: 'c3', keyword: 'leica camera', category: 'Cameras', enabled: true, isCustom: false },
-  { id: 'c4', keyword: 'vintage camera', category: 'Cameras', enabled: true, isCustom: false },
+  { id: 'cam1', keyword: 'sony a7', category: 'Cameras', enabled: true, isCustom: false, estimatedMarketValue: 1800 },
+  { id: 'cam2', keyword: 'fujifilm xt5', category: 'Cameras', enabled: true, isCustom: false, estimatedMarketValue: 1600 },
+  { id: 'cam3', keyword: 'canon r6', category: 'Cameras', enabled: true, isCustom: false, estimatedMarketValue: 1700 },
+  { id: 'cam4', keyword: 'leica q', category: 'Cameras', enabled: true, isCustom: false, estimatedMarketValue: 4000 },
+
+  // Drones
+  { id: 'dr1', keyword: 'dji mini 4', category: 'Drones', enabled: true, isCustom: false, estimatedMarketValue: 700 },
+  { id: 'dr2', keyword: 'dji air 3', category: 'Drones', enabled: true, isCustom: false, estimatedMarketValue: 950 },
+
+  // Gaming
+  { id: 'gm1', keyword: 'ps5 console', category: 'Gaming', enabled: true, isCustom: false, estimatedMarketValue: 400 },
+  { id: 'gm2', keyword: 'steam deck oled', category: 'Gaming', enabled: true, isCustom: false, estimatedMarketValue: 550 },
+  { id: 'gm3', keyword: 'xbox series x', category: 'Gaming', enabled: true, isCustom: false, estimatedMarketValue: 380 },
+
+  // Audio
+  { id: 'aud1', keyword: 'sonos arc', category: 'Audio', enabled: true, isCustom: false, estimatedMarketValue: 700 },
+  { id: 'aud2', keyword: 'bose soundbar 900', category: 'Audio', enabled: true, isCustom: false, estimatedMarketValue: 650 },
+  { id: 'aud3', keyword: 'sony wh1000xm5', category: 'Audio', enabled: true, isCustom: false, estimatedMarketValue: 280 },
 
   // Watches
-  { id: 'w1', keyword: 'rolex', category: 'Watches', enabled: true, isCustom: false },
-  { id: 'w2', keyword: 'omega watch', category: 'Watches', enabled: true, isCustom: false },
-  { id: 'w3', keyword: 'seiko watch', category: 'Watches', enabled: true, isCustom: false },
-  { id: 'w4', keyword: 'tag heuer', category: 'Watches', enabled: true, isCustom: false },
-  { id: 'w5', keyword: 'vintage watch', category: 'Watches', enabled: true, isCustom: false },
+  { id: 'wtch1', keyword: 'rolex submariner', category: 'Watches', enabled: true, isCustom: false, estimatedMarketValue: 8000 },
+  { id: 'wtch2', keyword: 'omega seamaster', category: 'Watches', enabled: true, isCustom: false, estimatedMarketValue: 2500 },
+  { id: 'wtch3', keyword: 'tag heuer carrera', category: 'Watches', enabled: true, isCustom: false, estimatedMarketValue: 2000 },
+  { id: 'wtch4', keyword: 'seiko prospex', category: 'Watches', enabled: true, isCustom: false, estimatedMarketValue: 380 },
 
-  // Collectibles
-  { id: 'col1', keyword: 'pokemon cards', category: 'Collectibles', enabled: true, isCustom: false },
-  { id: 'col2', keyword: 'baseball cards', category: 'Collectibles', enabled: true, isCustom: false },
-  { id: 'col3', keyword: 'comic book', category: 'Collectibles', enabled: true, isCustom: false },
-  { id: 'col4', keyword: 'funko pop', category: 'Collectibles', enabled: true, isCustom: false },
-  { id: 'col5', keyword: 'sports memorabilia', category: 'Collectibles', enabled: true, isCustom: false },
+  // Tools
+  { id: 'tl1', keyword: 'milwaukee m18 fuel', category: 'Tools', enabled: true, isCustom: false, estimatedMarketValue: 350 },
+  { id: 'tl2', keyword: 'snap on toolbox', category: 'Tools', enabled: true, isCustom: false, estimatedMarketValue: 500 },
+  { id: 'tl3', keyword: 'dewalt flexvolt', category: 'Tools', enabled: true, isCustom: false, estimatedMarketValue: 280 },
 
-  // Fashion & Sneakers
-  { id: 'f1', keyword: 'jordan sneakers', category: 'Sneakers', enabled: true, isCustom: false },
-  { id: 'f2', keyword: 'yeezy boost', category: 'Sneakers', enabled: true, isCustom: false },
-  { id: 'f3', keyword: 'nike dunk', category: 'Sneakers', enabled: true, isCustom: false },
-  { id: 'f4', keyword: 'louis vuitton', category: 'Fashion', enabled: true, isCustom: false },
-  { id: 'f5', keyword: 'supreme hoodie', category: 'Fashion', enabled: true, isCustom: false },
-
-  // Musical Instruments
-  { id: 'm1', keyword: 'gibson guitar', category: 'Instruments', enabled: true, isCustom: false },
-  { id: 'm2', keyword: 'fender stratocaster', category: 'Instruments', enabled: true, isCustom: false },
-  { id: 'm3', keyword: 'vintage vinyl', category: 'Instruments', enabled: true, isCustom: false },
-
-  // Jewelry
-  { id: 'j1', keyword: 'diamond ring', category: 'Jewelry', enabled: true, isCustom: false },
-  { id: 'j2', keyword: 'gold bracelet', category: 'Jewelry', enabled: true, isCustom: false },
+  // Home & Appliances
+  { id: 'hm1', keyword: 'dyson airwrap', category: 'Home', enabled: true, isCustom: false, estimatedMarketValue: 450 },
+  { id: 'hm2', keyword: 'dyson v15', category: 'Home', enabled: true, isCustom: false, estimatedMarketValue: 500 },
 ];

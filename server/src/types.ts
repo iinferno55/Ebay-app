@@ -14,6 +14,8 @@ export interface EbayListing {
   category: string;
   foundAt: string;
   isNew: boolean;
+  estimatedMarketValue: number;
+  estimatedProfit: number;
 }
 
 export interface KeywordEntry {
@@ -22,6 +24,7 @@ export interface KeywordEntry {
   category: string;
   enabled: boolean;
   isCustom: boolean;
+  estimatedMarketValue: number;
 }
 
 export interface ScanStatus {
@@ -50,4 +53,5 @@ export interface Settings {
   maxPriceFilter: number;
   minPriceFilter: number;
   autoScanEnabled: boolean;
+  minFlipProfit: number;
 }

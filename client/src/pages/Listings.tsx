@@ -13,8 +13,9 @@ const DEFAULT_FILTERS: ListingFilters = {
   maxBids: '',
   maxPrice: '',
   minPrice: '',
+  minFlipProfit: '',
   query: '',
-  sort: 'endTime',
+  sort: 'profit_desc',
 };
 
 export default function Listings() {

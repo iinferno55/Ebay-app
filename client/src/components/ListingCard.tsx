@@ -1,4 +1,4 @@
-import { ExternalLink, Clock, Gavel, MapPin, Tag } from 'lucide-react';
+import { ExternalLink, Clock, Gavel, MapPin, Tag, TrendingUp } from 'lucide-react';
 import { formatDistanceToNow, isPast, differenceInHours } from 'date-fns';
 import type { EbayListing } from '../types';
 
@@ -35,9 +35,17 @@ function getTimeStatus(endTime: string): { label: string; className: string } {
   };
 }
 
+function getProfitStyle(profit: number): { className: string; label: string } {
+  if (profit >= 200) return { className: 'bg-green-100 text-green-700 border border-green-200', label: 'Est. Profit' };
+  if (profit >= 100) return { className: 'bg-emerald-50 text-emerald-600 border border-emerald-200', label: 'Est. Profit' };
+  if (profit >= 50) return { className: 'bg-yellow-50 text-yellow-700 border border-yellow-200', label: 'Est. Profit' };
+  return { className: 'bg-red-50 text-red-500 border border-red-200', label: 'Est. Profit' };
+}
+
 export default function ListingCard({ listing }: ListingCardProps) {
   const timeStatus = getTimeStatus(listing.endTime);
   const hasImage = listing.galleryUrl && listing.galleryUrl.length > 0;
+  const profitStyle = getProfitStyle(listing.estimatedProfit);
 
   return (
     <div className="card overflow-hidden hover:shadow-cardHover transition-shadow duration-200 animate-fade-in flex flex-col">
@@ -79,6 +87,17 @@ export default function ListingCard({ listing }: ListingCardProps) {
           </h3>
         </div>
 
+        {/* Profit banner */}
+        <div className={`flex items-center justify-between rounded-lg px-3 py-2 ${profitStyle.className}`}>
+          <div className="flex items-center gap-1.5">
+            <TrendingUp className="w-3.5 h-3.5" />
+            <span className="text-xs font-medium">{profitStyle.label}</span>
+          </div>
+          <span className="text-sm font-bold">
+            {listing.estimatedProfit >= 0 ? '+' : ''}${listing.estimatedProfit}
+          </span>
+        </div>
+
         <div className="flex items-center gap-3 mt-auto">
           <div>
             <p className="text-lg font-semibold text-ink-300">
@@ -92,11 +111,10 @@ export default function ListingCard({ listing }: ListingCardProps) {
           </div>
 
           <div className="ml-auto flex flex-col items-end gap-1 text-right">
+            <span className="text-xs text-ink-100">
+              Market: <span className="font-medium text-ink-200">${listing.estimatedMarketValue}</span>
+            </span>
             <span className="badge-gray text-[11px]">{listing.category}</span>
-            <p className="text-xs text-ink-100 flex items-center gap-1">
-              <MapPin className="w-3 h-3" />
-              {listing.location}
-            </p>
           </div>
         </div>
 

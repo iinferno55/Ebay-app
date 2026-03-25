@@ -2,6 +2,7 @@ import { Search, SlidersHorizontal, X } from 'lucide-react';
 import type { ListingFilters } from '../types';
 
 const SORT_OPTIONS = [
+  { value: 'profit_desc', label: 'Best Profit First' },
   { value: 'endTime', label: 'Ending Soonest' },
   { value: 'foundAt', label: 'Recently Found' },
   { value: 'price_asc', label: 'Price: Low to High' },
@@ -11,15 +12,16 @@ const SORT_OPTIONS = [
 
 const CATEGORIES = [
   'all',
-  'Electronics',
-  'Gaming',
+  'Tablets',
+  'Laptops',
+  'Phones',
   'Cameras',
+  'Drones',
+  'Gaming',
+  'Audio',
   'Watches',
-  'Collectibles',
-  'Sneakers',
-  'Fashion',
-  'Instruments',
-  'Jewelry',
+  'Tools',
+  'Home',
   'Custom',
 ];
 
@@ -35,6 +37,7 @@ export default function FilterPanel({ filters, onChange, total }: FilterPanelPro
     filters.maxBids !== '' ||
     filters.maxPrice !== '' ||
     filters.minPrice !== '' ||
+    filters.minFlipProfit !== '' ||
     filters.query !== '';
 
   const clearFilters = () => {
@@ -43,8 +46,9 @@ export default function FilterPanel({ filters, onChange, total }: FilterPanelPro
       maxBids: '',
       maxPrice: '',
       minPrice: '',
+      minFlipProfit: '',
       query: '',
-      sort: 'endTime',
+      sort: 'profit_desc',
     });
   };
 
@@ -145,6 +149,19 @@ export default function FilterPanel({ filters, onChange, total }: FilterPanelPro
           min={0}
           value={filters.maxBids}
           onChange={(e) => onChange({ maxBids: e.target.value })}
+          className="input"
+        />
+      </div>
+
+      {/* Min flip profit */}
+      <div>
+        <label className="block text-xs font-medium text-ink-200 mb-1.5">Min Estimated Profit ($)</label>
+        <input
+          type="number"
+          placeholder="e.g. 50"
+          min={0}
+          value={filters.minFlipProfit}
+          onChange={(e) => onChange({ minFlipProfit: e.target.value })}
           className="input"
         />
       </div>

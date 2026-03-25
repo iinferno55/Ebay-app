@@ -37,7 +37,8 @@ export async function searchEbayMisspelling(
   keyword: string,
   originalKeyword: string,
   category: string,
-  appId: string
+  appId: string,
+  estimatedMarketValue: number
 ): Promise<EbayListing[]> {
   try {
     const params = new URLSearchParams({
@@ -91,6 +92,8 @@ export async function searchEbayMisspelling(
         category,
         foundAt: now,
         isNew: true,
+        estimatedMarketValue,
+        estimatedProfit: Math.round(estimatedMarketValue * 0.87 - 15 - (parseFloat(priceData.__value__) || 0)),
       };
     });
   } catch (err) {

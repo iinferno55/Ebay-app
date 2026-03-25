@@ -38,7 +38,7 @@ router.get('/listings', (req: Request, res: Response) => {
   let results = getListings();
 
   // Filters
-  const { category, maxBids, maxPrice, minPrice, query, sort } = req.query as Record<string, string>;
+  const { category, maxBids, maxPrice, minPrice, minFlipProfit, query, sort } = req.query as Record<string, string>;
 
   if (category && category !== 'all') {
     results = results.filter((l) => l.category.toLowerCase() === category.toLowerCase());
@@ -54,6 +54,10 @@ router.get('/listings', (req: Request, res: Response) => {
   if (minPrice) {
     const min = parseFloat(minPrice);
     results = results.filter((l) => l.currentPrice >= min);
+  }
+  if (minFlipProfit) {
+    const min = parseFloat(minFlipProfit);
+    results = results.filter((l) => l.estimatedProfit >= min);
   }
   if (query) {
     const q = query.toLowerCase();
@@ -74,6 +78,8 @@ router.get('/listings', (req: Request, res: Response) => {
         return a.bidCount - b.bidCount;
       case 'foundAt':
         return new Date(b.foundAt).getTime() - new Date(a.foundAt).getTime();
+      case 'profit_desc':
+        return b.estimatedProfit - a.estimatedProfit;
       case 'endTime':
       default:
         return new Date(a.endTime).getTime() - new Date(b.endTime).getTime();
@@ -163,7 +169,7 @@ router.get('/settings', (_req: Request, res: Response) => {
 });
 
 router.patch('/settings', (req: Request, res: Response) => {
-  const { scanIntervalMinutes, maxBidFilter, maxPriceFilter, minPriceFilter, autoScanEnabled } =
+  const { scanIntervalMinutes, maxBidFilter, maxPriceFilter, minPriceFilter, autoScanEnabled, minFlipProfit } =
     req.body as Record<string, unknown>;
   const updated = updateSettings({
     ...(typeof scanIntervalMinutes === 'number' && { scanIntervalMinutes }),
@@ -171,6 +177,7 @@ router.patch('/settings', (req: Request, res: Response) => {
     ...(typeof maxPriceFilter === 'number' && { maxPriceFilter }),
     ...(typeof minPriceFilter === 'number' && { minPriceFilter }),
     ...(typeof autoScanEnabled === 'boolean' && { autoScanEnabled }),
+    ...(typeof minFlipProfit === 'number' && { minFlipProfit }),
   });
   res.json(updated);
 });

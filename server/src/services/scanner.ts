@@ -13,6 +13,7 @@ let settings: Settings = {
   maxPriceFilter: 0, // 0 = no limit
   minPriceFilter: 0,
   autoScanEnabled: true,
+  minFlipProfit: 50,
 };
 
 let scanStatus: ScanStatus = {
@@ -70,12 +71,13 @@ export async function runScan(): Promise<void> {
           misspelling,
           entry.keyword,
           entry.category,
-          appId
+          appId,
+          entry.estimatedMarketValue
         );
         scanStatus.apiCallsUsed++;
 
         for (const listing of results) {
-          if (!seenItemIds.has(listing.itemId)) {
+          if (!seenItemIds.has(listing.itemId) && listing.estimatedProfit >= settings.minFlipProfit) {
             seenItemIds.add(listing.itemId);
             listing.isNew = true;
             newListings.push(listing);
@@ -186,6 +188,7 @@ export function addKeyword(keyword: string, category: string): KeywordEntry {
     category,
     enabled: true,
     isCustom: true,
+    estimatedMarketValue: 0,
   };
   keywords.push(entry);
   return entry;
