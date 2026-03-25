@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    color: #2C2C2C;
+    background: #F5F5F5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-brand-500 text-white rounded-md text-sm font-medium
+           hover:bg-brand-600 active:bg-brand-700 transition-colors duration-150 disabled:opacity-50
+           disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-white text-ink-300 border border-surface-300 rounded-md
+           text-sm font-medium hover:bg-surface-100 active:bg-surface-200 transition-colors duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 text-ink-200 rounded-md text-sm font-medium
+           hover:bg-surface-100 active:bg-surface-200 transition-colors duration-150;
+  }
+
+  .card {
+    @apply bg-white rounded-card shadow-card border border-surface-200;
+  }
+
+  .input {
+    @apply w-full px-3 py-2 bg-white border border-surface-300 rounded-md text-sm text-ink-300
+           placeholder:text-surface-500 focus:outline-none focus:border-brand-500 focus:ring-2
+           focus:ring-brand-500/20 transition-colors duration-150;
+  }
+
+  .select {
+    @apply w-full px-3 py-2 bg-white border border-surface-300 rounded-md text-sm text-ink-300
+           focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20
+           transition-colors duration-150 cursor-pointer appearance-none;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-blue {
+    @apply badge bg-brand-50 text-brand-600 border border-brand-100;
+  }
+
+  .badge-green {
+    @apply badge bg-deal-greenBg text-deal-green;
+  }
+
+  .badge-orange {
+    @apply badge bg-deal-orangeBg text-deal-orange;
+  }
+
+  .badge-red {
+    @apply badge bg-deal-redBg text-deal-red;
+  }
+
+  .badge-gray {
+    @apply badge bg-surface-100 text-ink-100;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #C7C7C7;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ADADAD;
+  }
+}
