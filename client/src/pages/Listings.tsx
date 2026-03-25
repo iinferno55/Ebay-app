@@ -30,6 +30,7 @@ export default function Listings() {
         maxBids: filters.maxBids || undefined,
         maxPrice: filters.maxPrice || undefined,
         minPrice: filters.minPrice || undefined,
+        minFlipProfit: filters.minFlipProfit || undefined,
         query: filters.query || undefined,
         sort: filters.sort,
       }),
