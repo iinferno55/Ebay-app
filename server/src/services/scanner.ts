@@ -13,7 +13,7 @@ let settings: Settings = {
   maxPriceFilter: 0, // 0 = no limit
   minPriceFilter: 0,
   autoScanEnabled: true,
-  minFlipProfit: 50,
+  minFlipProfit: 0,
 };
 
 let scanStatus: ScanStatus = {
@@ -76,8 +76,13 @@ export async function runScan(): Promise<void> {
         );
         scanStatus.apiCallsUsed++;
 
+        if (results.length > 0) {
+          console.log(`[Scanner]   "${misspelling}" → ${results.length} raw results`);
+        }
+
         for (const listing of results) {
-          if (!seenItemIds.has(listing.itemId) && listing.estimatedProfit >= settings.minFlipProfit) {
+          if (!seenItemIds.has(listing.itemId)) {
+            if (settings.minFlipProfit > 0 && listing.estimatedProfit < settings.minFlipProfit) continue;
             seenItemIds.add(listing.itemId);
             listing.isNew = true;
             newListings.push(listing);
